@@ -757,3 +757,80 @@ ModuleNotFoundError: No module named 'kubernetes'
 [2022-09-26T21:41:21.845-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:41:21.845-0300] {example_local_kubernetes_executor.py:40} WARNING - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes]
 [2022-09-26T21:41:21.845-0300] {processor.py:770} WARNING - No viable dags retrieved from /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
 [2022-09-26T21:41:21.852-0300] {processor.py:178} INFO - Processing /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py took 0.023 seconds
+[2022-09-26T21:41:57.329-0300] {processor.py:156} INFO - Started process (PID=16676) to work on /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:41:57.330-0300] {processor.py:758} INFO - Processing file /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py for tasks to queue
+[2022-09-26T21:41:57.331-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:41:57.331-0300] {dagbag.py:525} INFO - Filling up the DagBag from /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:41:57.343-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:41:57.343-0300] {example_local_kubernetes_executor.py:39} WARNING - Could not import DAGs in example_local_kubernetes_executor.py
+Traceback (most recent call last):
+  File "/home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[2022-09-26T21:41:57.343-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:41:57.343-0300] {example_local_kubernetes_executor.py:40} WARNING - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes]
+[2022-09-26T21:41:57.343-0300] {processor.py:770} WARNING - No viable dags retrieved from /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:41:57.349-0300] {processor.py:178} INFO - Processing /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py took 0.022 seconds
+[2022-09-26T21:42:32.189-0300] {processor.py:156} INFO - Started process (PID=16903) to work on /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:42:32.190-0300] {processor.py:758} INFO - Processing file /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py for tasks to queue
+[2022-09-26T21:42:32.190-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:42:32.190-0300] {dagbag.py:525} INFO - Filling up the DagBag from /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:42:32.203-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:42:32.202-0300] {example_local_kubernetes_executor.py:39} WARNING - Could not import DAGs in example_local_kubernetes_executor.py
+Traceback (most recent call last):
+  File "/home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[2022-09-26T21:42:32.203-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:42:32.203-0300] {example_local_kubernetes_executor.py:40} WARNING - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes]
+[2022-09-26T21:42:32.203-0300] {processor.py:770} WARNING - No viable dags retrieved from /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:42:32.209-0300] {processor.py:178} INFO - Processing /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py took 0.023 seconds
+[2022-09-26T21:43:07.031-0300] {processor.py:156} INFO - Started process (PID=17107) to work on /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:43:07.032-0300] {processor.py:758} INFO - Processing file /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py for tasks to queue
+[2022-09-26T21:43:07.032-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:43:07.032-0300] {dagbag.py:525} INFO - Filling up the DagBag from /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:43:07.044-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:43:07.044-0300] {example_local_kubernetes_executor.py:39} WARNING - Could not import DAGs in example_local_kubernetes_executor.py
+Traceback (most recent call last):
+  File "/home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[2022-09-26T21:43:07.044-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:43:07.044-0300] {example_local_kubernetes_executor.py:40} WARNING - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes]
+[2022-09-26T21:43:07.044-0300] {processor.py:770} WARNING - No viable dags retrieved from /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:43:07.050-0300] {processor.py:178} INFO - Processing /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py took 0.021 seconds
+[2022-09-26T21:43:46.178-0300] {processor.py:156} INFO - Started process (PID=17337) to work on /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:43:46.179-0300] {processor.py:758} INFO - Processing file /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py for tasks to queue
+[2022-09-26T21:43:46.179-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:43:46.179-0300] {dagbag.py:525} INFO - Filling up the DagBag from /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:43:46.192-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:43:46.191-0300] {example_local_kubernetes_executor.py:39} WARNING - Could not import DAGs in example_local_kubernetes_executor.py
+Traceback (most recent call last):
+  File "/home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[2022-09-26T21:43:46.192-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:43:46.192-0300] {example_local_kubernetes_executor.py:40} WARNING - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes]
+[2022-09-26T21:43:46.192-0300] {processor.py:770} WARNING - No viable dags retrieved from /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:43:46.199-0300] {processor.py:178} INFO - Processing /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py took 0.023 seconds
+[2022-09-26T21:44:24.960-0300] {processor.py:156} INFO - Started process (PID=17644) to work on /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:44:24.961-0300] {processor.py:758} INFO - Processing file /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py for tasks to queue
+[2022-09-26T21:44:24.961-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:44:24.961-0300] {dagbag.py:525} INFO - Filling up the DagBag from /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:44:24.973-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:44:24.973-0300] {example_local_kubernetes_executor.py:39} WARNING - Could not import DAGs in example_local_kubernetes_executor.py
+Traceback (most recent call last):
+  File "/home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[2022-09-26T21:44:24.974-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:44:24.974-0300] {example_local_kubernetes_executor.py:40} WARNING - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes]
+[2022-09-26T21:44:24.974-0300] {processor.py:770} WARNING - No viable dags retrieved from /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:44:24.980-0300] {processor.py:178} INFO - Processing /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py took 0.022 seconds
+[2022-09-26T21:45:00.504-0300] {processor.py:156} INFO - Started process (PID=17879) to work on /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:45:00.505-0300] {processor.py:758} INFO - Processing file /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py for tasks to queue
+[2022-09-26T21:45:00.506-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:45:00.505-0300] {dagbag.py:525} INFO - Filling up the DagBag from /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:45:00.517-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:45:00.517-0300] {example_local_kubernetes_executor.py:39} WARNING - Could not import DAGs in example_local_kubernetes_executor.py
+Traceback (most recent call last):
+  File "/home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[2022-09-26T21:45:00.518-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:45:00.518-0300] {example_local_kubernetes_executor.py:40} WARNING - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes]
+[2022-09-26T21:45:00.518-0300] {processor.py:770} WARNING - No viable dags retrieved from /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:45:00.524-0300] {processor.py:178} INFO - Processing /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py took 0.022 seconds
+[2022-09-26T21:45:34.880-0300] {processor.py:156} INFO - Started process (PID=18089) to work on /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:45:34.881-0300] {processor.py:758} INFO - Processing file /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py for tasks to queue
+[2022-09-26T21:45:34.881-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:45:34.881-0300] {dagbag.py:525} INFO - Filling up the DagBag from /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:45:34.894-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:45:34.893-0300] {example_local_kubernetes_executor.py:39} WARNING - Could not import DAGs in example_local_kubernetes_executor.py
+Traceback (most recent call last):
+  File "/home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[2022-09-26T21:45:34.894-0300] {logging_mixin.py:117} INFO - [2022-09-26T21:45:34.894-0300] {example_local_kubernetes_executor.py:40} WARNING - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes]
+[2022-09-26T21:45:34.894-0300] {processor.py:770} WARNING - No viable dags retrieved from /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py
+[2022-09-26T21:45:34.901-0300] {processor.py:178} INFO - Processing /home/nicholasbaraldi/.pyenv/versions/3.10.4/envs/twitter-api-data-stack-venv/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py took 0.023 seconds
