@@ -1,5 +1,4 @@
 aws*
-
 .env
-
 api_keys.json
+logs*
