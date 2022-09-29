@@ -54,6 +54,4 @@ ci: isort format type lint pytest
 ## install development requirements
 requirements:
 	@python -m pip install -U -r requirements.txt
-
-
-	
+  
