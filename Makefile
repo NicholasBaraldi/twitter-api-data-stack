@@ -49,3 +49,11 @@ lint:
 	docker exec -ti webserver flake8 /opt/airflow/dags
 
 ci: isort format type lint pytest
+
+.PHONY: requirements
+## install development requirements
+requirements:
+	@python -m pip install -U -r requirements.txt
+
+
+	
