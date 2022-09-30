@@ -1,0 +1,15 @@
+# setup
+setuptools
+
+# tests
+pytest
+pytest-cov
+
+# code quality
+black
+isort 
+flake8
+flake8-isort
+flake8-docstrings
+pep8-naming
+mypy
