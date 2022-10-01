@@ -5,17 +5,32 @@ import logging
 logger = logging.getLogger("twitter_search")
 
 
-class twitter:
+class Twitter:
     """_summary_"""
 
-    def __init__(self, bearer_token):
+    def __init__(self, bearer_token: str) -> None:
+        """Create request session and recieve authorization params.
+
+        Args:
+            bearer_token (str): Autentication token.
+        """
 
         self.bearer_token = bearer_token
         self._api_base_url = f"https://api.twitter.com/2/tweets/search/recent"
 
         logger.info("Class=twitter, Method=__init__ msg=Instance Created")
 
-    def twitter_search(self, query: str, ntweet: int):
+    def _twitter_search(self, query: str, ntweet: int, nreq: int) -> list:
+        """Call the API and store requests in a list.
+
+        Args:
+            query (str): Query param.
+            ntweet (int): Number of tweets per request.
+
+        Returns:
+            list: List of tweets.
+        """
+
         params = {
             "query": query,
             "max_results": ntweet,
@@ -26,17 +41,30 @@ class twitter:
         tweets = []
         headers = {"Authorization": f"Bearer {self.bearer_token}"}
         r = requests.get(self._api_base_url, headers=headers, params=params).json()
-        tweets.append(r)
 
-        nreq = 200
-
-        while nreq > 0:
+        while nreq > 0 and "next_token" in r["meta"]:
             params["next_token"] = r["meta"]["next_token"]
             r = requests.get(self._api_base_url, headers=headers, params=params).json()
-            print(r)
             tweets.append(r)
             nreq -= 1
+        return tweets
 
+    def make_req(self, query: str, ntweet: int, nreq: int) -> list:
+        """Call _twitter_search and raises an error if reqs are not done.
 
-data = json.load(open("./api_keys.json"))["Bearer Token"]
-twitter(data).twitter_search("Lula", 100)
+        Args:
+            query (str): Query param.
+            ntweet (int): Number of tweets per request.
+            nreq (int): Number of requests.
+
+        Raises:
+            Exception: Stops method if tweets_list are empty.
+
+        Returns:
+            list: List of tweets.
+        """
+        tweets_list = self._twitter_search(query, ntweet, nreq)
+        if tweets_list:
+            logger.info("Class=twitter, Method=make_req msg=API returned successfully")
+            return tweets_list
+        raise Exception("Class=twitter, Method=make_req msg=API return failed")

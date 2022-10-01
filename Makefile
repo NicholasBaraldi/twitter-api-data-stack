@@ -101,5 +101,12 @@ checks: style-check quality-check type-check
 ## fix stylistic errors with black and isort
 apply-style:
 	@python -m black --exclude="build/|buck-out/|dist/|_build/|pip/|\\.pip/|\.git/|\.hg/|\.mypy_cache/|\.tox/|\.venv/" .
-	@python -m isort recommendation_app/ tests/
   
+.PHONY: tests
+## run unit tests with coverage report
+tests:
+	@echo ""
+	@echo "Unit Tests"
+	@echo "=========="
+	@echo ""
+	@python -m pytest --cov-config=.coveragerc --cov=serasa_twitter/clients --cov-report term --cov-report html:htmlcov --cov-report xml:coverage.xml --cov-fail-under=75 tests
