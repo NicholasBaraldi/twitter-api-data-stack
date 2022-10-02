@@ -1,24 +1,26 @@
 from airflow import DAG
-from airflow.operatr.python import PythonOperator
+from airflow.operators.python import PythonOperator
 from datetime import datetime
 from twitter_api.twitter_client.twitter_search import Twitter
 from pyspark.sql import SparkSession
 
 
 def create_spark_session():
-    spark_session = SparkSession.builder.getOrCreate()
+    spark_session = SparkSession.builder.config(
+        "spark.jars.packages", "com.amazonaws:aws-java-sdk-bundle:1.12.314"
+    ).getOrCreate()
     return spark_session
 
 
-def read_twitter_df():
+def write_twitter_df():
     spark = create_spark_session()
     bucket_name = "databoys"
-    file_name = "tweets_json"
+    file_name = "tweets_json.json"
     t = Twitter()
     query = "#HouseOfTheDragon"
     ntweet = 100
     nreq = 200
-    tweets = t.make_req(query, ntweet, nreq)
+    tweets, users = t.make_req(query, ntweet, nreq)
     spark_tweets_df = spark.createDataFrame(data=tweets)
     spark_tweets_df.write.json(f"s3a://{bucket_name}/Raw/{file_name}")
     if tweets:
@@ -32,4 +34,8 @@ with DAG(
     schedule_interval="0 21 * * 0",
     catchup=False,
 ) as dag:
-    pass
+    write_twitter_df = PythonOperator(
+        task_id="write_twitter_df", python_callable=write_twitter_df
+    )
+
+write_twitter_df
