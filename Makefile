@@ -22,7 +22,10 @@ help:
 	@echo ' make shell-ipython    connect to api container in new bash shell  '
 	@echo ' make shell-db         shell into psql inside database container   '
 	@echo ' make view-dash        view task queue dashboardd                  '
-	@echo '                                                                   '
+	@echo ''
+                                                                 
+build:
+	docker build . --tag airflow-databoys:2.4.0
 
 up:
 	docker compose up -d

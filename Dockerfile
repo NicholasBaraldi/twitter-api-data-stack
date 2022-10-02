@@ -1,7 +1,4 @@
 FROM apache/airflow:2.4.0
 
-RUN cd /twitter-api-data-stack && pip install .
-
-
-WORKDIR /twitter-api-data-stack
-CMD ["bash"]
+COPY ./requirements.txt /requirements.txt
+RUN cd / && pip install -r requirements.txt
