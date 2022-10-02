@@ -25,7 +25,7 @@ help:
 	@echo '                                                                   '
 
 up:
-	docker compose up airflow-init && docker compose up --build -d
+	docker compose up -d
 
 down:
 	docker compose down
