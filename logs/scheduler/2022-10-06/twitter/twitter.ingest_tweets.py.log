@@ -1,0 +1,387 @@
+[2022-10-06T00:38:33.933+0000] {processor.py:156} INFO - Started process (PID=41) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:38:33.934+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:38:33.934+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:38:33.934+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:38:33.936+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:38:33.935+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:38:33.937+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:38:33.953+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.023 seconds
+[2022-10-06T00:39:04.262+0000] {processor.py:156} INFO - Started process (PID=105) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:39:04.262+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:39:04.263+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:39:04.263+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:39:04.264+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:39:04.264+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:39:04.264+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:39:04.276+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.016 seconds
+[2022-10-06T00:39:34.892+0000] {processor.py:156} INFO - Started process (PID=170) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:39:34.893+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:39:34.893+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:39:34.893+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:39:34.894+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:39:34.894+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:39:34.895+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:39:34.909+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.018 seconds
+[2022-10-06T00:40:05.498+0000] {processor.py:156} INFO - Started process (PID=225) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:40:05.499+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:40:05.499+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:40:05.499+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:40:05.500+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:40:05.500+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:40:05.501+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:40:05.511+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.015 seconds
+[2022-10-06T00:40:35.535+0000] {processor.py:156} INFO - Started process (PID=289) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:40:35.536+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:40:35.536+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:40:35.536+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:40:35.537+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:40:35.537+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:40:35.537+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:40:35.549+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.016 seconds
+[2022-10-06T00:41:06.537+0000] {processor.py:156} INFO - Started process (PID=353) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:41:06.538+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:41:06.538+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:41:06.538+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:41:06.540+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:41:06.539+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:41:06.540+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:41:06.550+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.015 seconds
+[2022-10-06T00:41:36.639+0000] {processor.py:156} INFO - Started process (PID=417) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:41:36.639+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:41:36.640+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:41:36.640+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:41:36.642+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:41:36.641+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:41:36.642+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:41:36.654+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.017 seconds
+[2022-10-06T00:42:06.664+0000] {processor.py:156} INFO - Started process (PID=472) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:42:06.664+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:42:06.665+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:42:06.665+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:42:06.666+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:42:06.665+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:42:06.666+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:42:06.677+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.015 seconds
+[2022-10-06T00:42:37.037+0000] {processor.py:156} INFO - Started process (PID=536) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:42:37.038+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:42:37.038+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:42:37.038+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:42:37.039+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:42:37.039+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:42:37.040+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:42:37.051+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.016 seconds
+[2022-10-06T00:43:08.002+0000] {processor.py:156} INFO - Started process (PID=600) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:43:08.003+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:43:08.003+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:43:08.003+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:43:08.005+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:43:08.004+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:43:08.005+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:43:08.015+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.015 seconds
+[2022-10-06T00:43:38.024+0000] {processor.py:156} INFO - Started process (PID=664) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:43:38.024+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:43:38.025+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:43:38.025+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:43:38.026+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:43:38.025+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:43:38.026+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:43:38.060+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.038 seconds
+[2022-10-06T00:44:08.980+0000] {processor.py:156} INFO - Started process (PID=719) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:44:09.018+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:44:09.018+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:44:09.018+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:44:09.020+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:44:09.019+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:44:09.020+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:44:09.034+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.056 seconds
+[2022-10-06T00:44:39.928+0000] {processor.py:156} INFO - Started process (PID=783) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:44:39.928+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:44:39.929+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:44:39.929+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:44:39.930+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:44:39.929+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:44:39.930+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:44:39.941+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.014 seconds
+[2022-10-06T00:45:10.674+0000] {processor.py:156} INFO - Started process (PID=847) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:45:10.675+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:45:10.675+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:45:10.675+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:45:10.677+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:45:10.676+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:45:10.677+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:45:10.688+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.015 seconds
+[2022-10-06T00:45:41.692+0000] {processor.py:156} INFO - Started process (PID=911) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:45:41.692+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:45:41.692+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:45:41.692+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:45:41.693+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:45:41.693+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:45:41.694+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:45:41.704+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.014 seconds
+[2022-10-06T00:46:12.557+0000] {processor.py:156} INFO - Started process (PID=975) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:46:12.567+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:46:12.567+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:46:12.567+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:46:12.569+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:46:12.568+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:46:12.569+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:46:12.580+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.025 seconds
+[2022-10-06T00:46:43.329+0000] {processor.py:156} INFO - Started process (PID=1030) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:46:43.329+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:46:43.330+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:46:43.330+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:46:43.331+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:46:43.330+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:46:43.331+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:46:43.342+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.015 seconds
+[2022-10-06T00:47:14.231+0000] {processor.py:156} INFO - Started process (PID=1094) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:47:14.268+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:47:14.269+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:47:14.269+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:47:14.270+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:47:14.270+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:47:14.270+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:47:14.282+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.053 seconds
+[2022-10-06T00:47:45.287+0000] {processor.py:156} INFO - Started process (PID=1157) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:47:45.324+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:47:45.325+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:47:45.325+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:47:45.326+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:47:45.326+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 860, in get_code
+  File "<frozen importlib._bootstrap_external>", line 791, in source_to_code
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 44
+    success =
+             ^
+SyntaxError: invalid syntax
+[2022-10-06T00:47:45.327+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:47:45.337+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.052 seconds
+[2022-10-06T00:47:55.478+0000] {processor.py:156} INFO - Started process (PID=1203) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:47:55.478+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:47:55.478+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:47:55.478+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:47:55.546+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:47:55.545+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 11, in <module>
+    AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+  File "/usr/local/lib/python3.7/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'AWS_ACCESS_KEY_ID'
+[2022-10-06T00:47:55.546+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:47:55.557+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.081 seconds
+[2022-10-06T00:48:25.736+0000] {processor.py:156} INFO - Started process (PID=1268) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:48:25.736+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:48:25.737+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:48:25.737+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:48:25.775+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:48:25.774+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 11, in <module>
+    AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+  File "/usr/local/lib/python3.7/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'AWS_ACCESS_KEY_ID'
+[2022-10-06T00:48:25.775+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:48:25.786+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.052 seconds
+[2022-10-06T00:48:55.957+0000] {processor.py:156} INFO - Started process (PID=1323) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:48:55.994+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:48:55.994+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:48:55.994+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:48:56.033+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:48:56.032+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 11, in <module>
+    AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+  File "/usr/local/lib/python3.7/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'AWS_ACCESS_KEY_ID'
+[2022-10-06T00:48:56.033+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:48:56.043+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.089 seconds
+[2022-10-06T00:49:26.883+0000] {processor.py:156} INFO - Started process (PID=1388) to work on /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:49:26.884+0000] {processor.py:758} INFO - Processing file /opt/airflow/dags/twitter/twitter.ingest_tweets.py for tasks to queue
+[2022-10-06T00:49:26.884+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:49:26.884+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:49:26.922+0000] {logging_mixin.py:117} INFO - [2022-10-06T00:49:26.921+0000] {dagbag.py:330} ERROR - Failed to import: /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 326, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/twitter/twitter.ingest_tweets.py", line 11, in <module>
+    AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+  File "/usr/local/lib/python3.7/os.py", line 681, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'AWS_ACCESS_KEY_ID'
+[2022-10-06T00:49:26.922+0000] {processor.py:770} WARNING - No viable dags retrieved from /opt/airflow/dags/twitter/twitter.ingest_tweets.py
+[2022-10-06T00:49:26.933+0000] {processor.py:178} INFO - Processing /opt/airflow/dags/twitter/twitter.ingest_tweets.py took 0.051 seconds
