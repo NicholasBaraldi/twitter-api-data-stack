@@ -8,13 +8,14 @@ import logging
 
 
 logger = logging.getLogger("write_twitter_df")
-AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
 
 
 def create_spark_session():
     spark_session = SparkSession.builder.config(
-        "spark.jars.packages", "org.apache.hadoop:hadoop-common:3.3.3,org.apache.hadoop:hadoop-client:3.3.3,org.apache.hadoop:hadoop-aws:3.3.3"
+        "spark.jars.packages",
+        "org.apache.hadoop:hadoop-common:3.3.3,org.apache.hadoop:hadoop-client:3.3.3,org.apache.hadoop:hadoop-aws:3.3.3",
     ).getOrCreate()
     return spark_session
 
@@ -31,25 +32,60 @@ def write_twitter_df():
     tweets, users = t.make_req(query, ntweet, nreq)
     spark_tweets_df = spark.createDataFrame(data=tweets)
     spark_users_df = spark.createDataFrame(data=users)
-    spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.access.key", AWS_ACCESS_KEY_ID)
-    spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.secret.key", AWS_SECRET_ACCESS_KEY)
-    spark_tweets_df.write.json(f"s3a://{bucket_name}/Raw/{date.today()}/{file_name_tweet}")
-    spark_tweets_df.write.json(f"s3a://{bucket_name}/Raw/{date.today()}/{file_name_user}")
+    spark.sparkContext._jsc.hadoopConfiguration().set(
+        "fs.s3a.access.key", AWS_ACCESS_KEY_ID
+    )
+    spark.sparkContext._jsc.hadoopConfiguration().set(
+        "fs.s3a.secret.key", AWS_SECRET_ACCESS_KEY
+    )
+    spark_tweets_df.write.json(
+        f"s3a://{bucket_name}/Raw/{date.today()}/{file_name_tweet}"
+    )
+    spark_tweets_df.write.json(
+        f"s3a://{bucket_name}/Raw/{date.today()}/{file_name_user}"
+    )
     logger.info("msg=DataFrame Written")
-    if spark_tweets_df:
+    if spark_tweets_df and spark_users_df:
         return 1
     return 0
 
-def raw_to_trusted():
-    success = 
+
+def raw_to_trusted(task_instance):
+    file_name_tweet = "tweets_json.json"
+    file_name_user = "tweets_json.json"
+    success = task_instance.xcom_pull(task_ids="write_twitter_df")
     if success == 1:
         spark = create_spark_session()
         bucket_name = "databoys"
         file_name = "tweets_json.json"
-        spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.access.key", AWS_ACCESS_KEY_ID)
-        spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.secret.key", AWS_SECRET_ACCESS_KEY)
-        tweet = spark.read.json(f"s3a://{bucket_name}/Raw/{date.today()}/{file_name}")
-        tweet.write.mode('append').parquet(f"s3a://{bucket_name}/Trusted/{date.today()}/{file_name}")
+        spark.sparkContext._jsc.hadoopConfiguration().set(
+            "fs.s3a.access.key", AWS_ACCESS_KEY_ID
+        )
+        spark.sparkContext._jsc.hadoopConfiguration().set(
+            "fs.s3a.secret.key", AWS_SECRET_ACCESS_KEY
+        )
+        tweet = spark.read.json(
+            f"s3a://{bucket_name}/Raw/{date.today()}/{file_name_tweet}"
+        )
+        users = spark.read.json(
+            f"s3a://{bucket_name}/Raw/{date.today()}/{file_name_user}"
+        )
+        try:
+            x = spark.read.json(f"s3a://{bucket_name}/Trusted/{file_name_tweet}")
+            y = spark.read.json(f"s3a://{bucket_name}/Trusted/{file_name_user}")
+        except:
+            x = 0
+            y = 0
+        if x == 0 and y == 0:
+            tweet.write.mode("append").json(
+                f"s3a://{bucket_name}/Trusted/{file_name_tweet}"
+            )
+            users.write.mode("append").json(
+                f"s3a://{bucket_name}/Trusted/{file_name_user}"
+            )
+        else:
+            tweet.write.json(f"s3a://{bucket_name}/Trusted/{file_name_tweet}")
+            users.write.json(f"s3a://{bucket_name}/Trusted/{file_name_user}")
     else:
         logger.info("msg=Error")
 
