@@ -1,6 +1,6 @@
 aws*
 .env
 api_keys.json
-
+logs*
 .coverage
 __pycache__/
