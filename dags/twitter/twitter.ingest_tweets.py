@@ -3,25 +3,30 @@ from airflow.operators.python import PythonOperator
 from datetime import datetime, date
 from twitter_api.twitter_client.twitter_search import Twitter
 from pyspark.sql import SparkSession
-import os
+from airflow.models import Variable
 import logging
 
 
+AWS_ACCESS_KEY_ID = Variable.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = Variable.get("AWS_SECRET_ACCESS_KEY")
+
 logger = logging.getLogger("write_twitter_df")
-AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
-AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
+
 
 
 def create_spark_session():
     spark_session = SparkSession.builder.config(
         "spark.jars.packages",
         "org.apache.hadoop:hadoop-common:3.3.3,org.apache.hadoop:hadoop-client:3.3.3,org.apache.hadoop:hadoop-aws:3.3.3",
-    ).getOrCreate()
+    ).master("local[*]").getOrCreate()
     return spark_session
 
 
 def write_twitter_df():
-    spark = create_spark_session()
+    spark = SparkSession.builder.config(
+        "spark.jars.packages",
+        "org.apache.hadoop:hadoop-common:3.3.3,org.apache.hadoop:hadoop-client:3.3.3,org.apache.hadoop:hadoop-aws:3.3.3",
+    ).master("local[*]").getOrCreate()
     bucket_name = "databoys"
     file_name_tweet = "tweets_json.json"
     file_name_user = "tweets_json.json"
@@ -55,9 +60,11 @@ def raw_to_trusted(task_instance):
     file_name_user = "tweets_json.json"
     success = task_instance.xcom_pull(task_ids="write_twitter_df")
     if success == 1:
-        spark = create_spark_session()
+        spark = SparkSession.builder.config(
+        "spark.jars.packages",
+        "org.apache.hadoop:hadoop-common:3.3.3,org.apache.hadoop:hadoop-client:3.3.3,org.apache.hadoop:hadoop-aws:3.3.3",
+        ).master("local[*]").getOrCreate()
         bucket_name = "databoys"
-        file_name = "tweets_json.json"
         spark.sparkContext._jsc.hadoopConfiguration().set(
             "fs.s3a.access.key", AWS_ACCESS_KEY_ID
         )
@@ -88,6 +95,7 @@ def raw_to_trusted(task_instance):
             users.write.json(f"s3a://{bucket_name}/Trusted/{file_name_user}")
     else:
         logger.info("msg=Error")
+    return
 
 
 with DAG(
@@ -96,6 +104,7 @@ with DAG(
     schedule_interval="0 21 * * 0",
     catchup=False,
 ) as dag:
+
     write_twitter_df = PythonOperator(
         task_id="write_twitter_df", python_callable=write_twitter_df
     )
@@ -103,4 +112,4 @@ with DAG(
         task_id="raw_to_trusted", python_callable=raw_to_trusted
     )
 
-write_twitter_df > raw_to_trusted
+write_twitter_df >> raw_to_trusted
