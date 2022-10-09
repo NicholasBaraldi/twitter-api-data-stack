@@ -16,7 +16,7 @@ class Twitter:
         Args:
             bearer_token (str): Autentication token.
         """
-        bearer_token = json.load(open("./api_keys.json"))["Bearer Token"]
+        bearer_token = json.load(open("/twitter-api-data-stack/api_keys.json"))["Bearer Token"]
         self.bearer_token = bearer_token
         self._api_base_url = f"https://api.twitter.com/2/tweets/search/recent"
 
