@@ -4,4 +4,4 @@ api_keys.json
 logs*
 .coverage
 __pycache__/
-/twitter-api-data-stack/dags/
+/twitter-api-data-stack/dags/data/*

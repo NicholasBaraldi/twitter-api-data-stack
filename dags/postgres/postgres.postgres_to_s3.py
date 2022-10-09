@@ -31,15 +31,23 @@ def postgres_to_s3():
     cursor.close()
     psql_conn.close()
     logging.info("Saved table movies in DB")
-    s3_hook = S3Hook(aws_conn_id="s3_databoys") 
+    s3_hook = S3Hook(aws_conn_id="my_conn_S3") 
     s3_hook.load_file(
         filename= f"dags/data/movies_{date.today()}.csv",
-        key=f"movies_{date.today()}.csv",
+        key=f"Raw/Postgresql/movies_{date.today()}.csv",
         bucket_name="databoys",
         replace = True
     )
     logging.info("Saved csv on S3")
      
+def raw_to_trusted():
+    s3_hook = S3Hook(aws_conn_id="my_conn_S3")
+    logging.info("Connection Successful")
+    s3_hook.copy_object(
+        source_bucket_key=f"s3://databoys/Raw/Postgresql/movies_{date.today()}.csv",
+        dest_bucket_key=f"s3://databoys/Trusted/Postgresql/movies_{date.today()}.csv",
+    )
+    logging.info("Saved csv on Trusted")
 
 
 with DAG(
@@ -50,11 +58,12 @@ with DAG(
     catchup=False,
 ) as dag:
 
-    write_twitter_df = PythonOperator(
+    postgres_to_s3 = PythonOperator(
         task_id="postgres_to_s3", python_callable=postgres_to_s3
     )
-    # raw_to_trusted = PythonOperator(
-    #     task_id="raw_to_trusted", python_callable=raw_to_trusted
-    # )
+    
+    raw_to_trusted = PythonOperator(
+        task_id="raw_to_trusted", python_callable=raw_to_trusted
+    )
 
-write_twitter_df # >> raw_to_trusted
+postgres_to_s3 >> raw_to_trusted 
