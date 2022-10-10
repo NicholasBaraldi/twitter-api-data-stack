@@ -71,7 +71,7 @@ def write_twitter_df():
     # )
     # logger.info("msg=spark_users_df Written")
     logger.info("msg=task Successful")
-    if spark_tweets_df and spark_users_df:
+    if spark_tweets_df: #and spark_users_df:
         return 1
     return 0
 

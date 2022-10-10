@@ -14,7 +14,7 @@ class Twitter:
         """Create request session and recieve authorization params.
 
         Args:
-            bearer_token (str): Autentication token.
+            bearer_token (str): Authentication token.
         """
         self.bearer_token = bearer_token
         self._api_base_url = f"https://api.twitter.com/2/tweets/search/recent"
