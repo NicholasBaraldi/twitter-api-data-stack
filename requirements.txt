@@ -2,3 +2,4 @@ requests
 boto3
 pyspark
 apache-airflow-providers-apache-spark
+dbt-spark[session]

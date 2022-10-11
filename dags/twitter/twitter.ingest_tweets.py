@@ -5,6 +5,7 @@ from twitter_api.twitter_client.twitter_search import Twitter
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from airflow.models import Variable
+from airflow.providers.amazon.aws.operators.redshift import RedshiftSQLOperator
 import logging
 import os
 

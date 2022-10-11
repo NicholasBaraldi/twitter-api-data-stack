@@ -5,6 +5,7 @@ from airflow.operators.python import PythonOperator
 from datetime import date, datetime, timedelta
 from pyspark.sql import SparkSession
 from airflow.models import Variable
+from airflow.providers.amazon.aws.operators.redshift import RedshiftSQLOperator
 import logging
 import csv
 
@@ -64,6 +65,43 @@ with DAG(
     
     raw_to_trusted = PythonOperator(
         task_id="raw_to_trusted", python_callable=raw_to_trusted
+    )
+    
+    setup__task_create_table = RedshiftSQLOperator(
+        task_id='setup__create_table',
+        redshift_conn_id = 'jfc',
+        sql="""
+            CREATE TABLE IF NOT EXISTS movies (
+            id serial PRIMARY KEY,
+            id_movie VARCHAR ( 50 ) UNIQUE NOT NULL,
+            title VARCHAR ( 255 ) NOT NULL,
+            type VARCHAR ( 50 ),
+            description VARCHAR(50000),
+            release_year FLOAT,
+            age_certification VARCHAR(255),
+            runtime FLOAT,
+            genres VARCHAR (1000),
+            production_country VARCHAR(55),
+            seasons FLOAT,
+            imdb_id VARCHAR ( 50 ),
+            imdb_score FLOAT,
+            imdb_votes FLOAT,
+            tmdb_popularity FLOAT,
+            tmdb_score FLOAT,
+            genres_transformed VARCHAR ( 255 ),
+            production_country_transformed VARCHAR ( 50 )
+        );
+        """
+
+        transfer_s3_to_redshift = S3ToRedshiftOperator(
+            task_id='transfer_s3_to_redshift',
+            redshift_conn_id=conn_id_name,
+            s3_bucket=bucket_name,
+            s3_key=S3_KEY_2,
+            schema='PUBLIC',
+            table=REDSHIFT_TABLE,
+            copy_options=['csv']
+        )
     )
 
 postgres_to_s3 >> raw_to_trusted 
