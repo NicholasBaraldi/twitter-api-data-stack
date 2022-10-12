@@ -2,14 +2,14 @@ FROM apache/airflow:2.4.0
 
 USER root
 
-RUN apt update && \
-    apt-get install -y openjdk-11-jdk && \
-    apt-get install -y ant && \
-    apt-get clean;
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository "deb http://security.debian.org/debian-security stretch/updates main" && \ 
+    apt-get update && \
+    apt-get install -y openjdk-8-jdk
 
-ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64/
 RUN export JAVA_HOME
-ENV PYSPARK_SUBMIT_ARGS --master local[2] pyspark-shell
+
 RUN export PYSPARK_SUBMIT_ARGS
 USER airflow 
 COPY ./requirements.txt /requirements.txt
