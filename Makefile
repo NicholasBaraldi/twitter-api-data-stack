@@ -23,7 +23,8 @@ help:
 	@echo ' make shell-db         shell into psql inside database container   '
 	@echo ' make view-dash        view task queue dashboardd                  '
 	@echo ''
-                                                                 
+
+.PHONY: build
 build:
 	docker build . --tag airflow-databoys:2.4.0
 
