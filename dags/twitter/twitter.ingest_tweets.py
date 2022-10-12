@@ -5,7 +5,7 @@ from twitter_api.twitter_client.twitter_search import Twitter
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from airflow.models import Variable
-from airflow.providers.amazon.aws.operators.redshift import RedshiftSQLOperator
+# from airflow.providers.amazon.aws.operators.redshift import RedshiftSQLOperator
 import logging
 import os
 
@@ -29,7 +29,6 @@ def create_spark_session():
 
 def write_twitter_df():
     print(os.environ['JAVA_HOME'])
-    print(bearer_token)
     logger.info("JAVA_HOME")
     spark = create_spark_session()
     bucket_name = "databoys"

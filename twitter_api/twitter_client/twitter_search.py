@@ -8,7 +8,7 @@ logger = logging.getLogger("twitter_search")
 
 
 class Twitter:
-    """_summary_"""
+    """Class for making request to twitter API."""
 
     def __init__(self, bearer_token) -> None:
         """Create request session and recieve authorization params.
