@@ -5,6 +5,7 @@ from twitter_api.twitter_client.twitter_search import Twitter
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from airflow.models import Variable
+
 # from airflow.providers.amazon.aws.operators.redshift import RedshiftSQLOperator
 import logging
 import os
@@ -18,22 +19,25 @@ bearer_token = Variable.get("Bearer Token")
 logger = logging.getLogger("write_twitter_df")
 
 
-
 def create_spark_session():
-    spark_session = SparkSession.builder.config(
-        "spark.jars.packages",
-        "org.apache.hadoop:hadoop-common:3.3.3,org.apache.hadoop:hadoop-client:3.3.3,org.apache.hadoop:hadoop-aws:3.3.3",
-    ).master("local[*]").getOrCreate()
+    spark_session = (
+        SparkSession.builder.config(
+            "spark.jars.packages",
+            "org.apache.hadoop:hadoop-common:3.3.3,org.apache.hadoop:hadoop-client:3.3.3,org.apache.hadoop:hadoop-aws:3.3.3",
+        )
+        .master("local[*]")
+        .getOrCreate()
+    )
     return spark_session
 
 
 def write_twitter_df():
-    print(os.environ['JAVA_HOME'])
     logger.info("JAVA_HOME")
     spark = create_spark_session()
+    sc = spark.sparkContext
     bucket_name = "databoys"
     file_name_tweet = "tweets_json.json"
-    file_name_user = "tweets_json.json"
+    file_name_user = "users_json.json"
     t = Twitter(bearer_token)
     query = "#HouseOfTheDragon"
     ntweet = 100
@@ -42,19 +46,10 @@ def write_twitter_df():
     logger.info("msg=API Returned")
     print(tweets)
     print(users)
-    schema_tweets=StructType([
-    StructField('author_id', StringType(), True),
-    StructField('created_at',StringType(), True),
-    StructField('edit_history_tweet_ids',StringType(), True),
-    StructField('id',StringType(), True),
-    StructField('text',StringType(), True)
-
-])
-    spark_tweets_df = spark.createDataFrame(data=tweets, schema=schema_tweets)
+    spark_tweets_df = sc.parallelize(tweets).toDF()
     logger.info("msg=spark_tweets_df Created")
-    # schema_users="description str, id int, name str, username str"
-    # spark_users_df = spark.createDataFrame(data=users, schema=schema_users)
-    # logger.info("msg=spark_users_df Created")
+    spark_users_df = sc.parallelize(users).toDF()
+    logger.info("msg=spark_users_df Created")
     spark.sparkContext._jsc.hadoopConfiguration().set(
         "fs.s3a.access.key", AWS_ACCESS_KEY_ID
     )
@@ -66,12 +61,12 @@ def write_twitter_df():
         f"s3a://{bucket_name}/Raw/{date.today()}/{file_name_tweet}"
     )
     logger.info("msg=spark_tweets_df Written")
-    # spark_users_df.write.json(
-    #     f"s3a://{bucket_name}/Raw/{date.today()}/{file_name_user}"
-    # )
-    # logger.info("msg=spark_users_df Written")
+    spark_users_df.write.json(
+        f"s3a://{bucket_name}/Raw/{date.today()}/{file_name_user}"
+    )
+    logger.info("msg=spark_users_df Written")
     logger.info("msg=task Successful")
-    if spark_tweets_df: #and spark_users_df:
+    if spark_tweets_df and spark_users_df:
         return 1
     return 0
 
@@ -133,4 +128,4 @@ with DAG(
     #     task_id="raw_to_trusted", python_callable=raw_to_trusted
     # )
 
-write_twitter_df # >> raw_to_trusted
+write_twitter_df  # >> raw_to_trusted
