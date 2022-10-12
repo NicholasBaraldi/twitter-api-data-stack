@@ -33,29 +33,20 @@ def create_spark_session():
 
 def write_twitter_df():
     logger.info("JAVA_HOME")
-    spark = create_spark_session()
-    sc = spark.sparkContext
+    spark = create_spark_session().sparkContext
     bucket_name = "databoys"
     file_name_tweet = "tweets_json.json"
     file_name_user = "users_json.json"
     t = Twitter(bearer_token)
-    query = "#HouseOfTheDragon"
-    ntweet = 100
-    nreq = 2
-    tweets, users = t.make_req(query, ntweet, nreq)
+    params = {"query": "#HouseOfTheDragon", "ntweet": 100, "nreq": 2}
+    tweets, users = t.make_req(params["query"], params["ntweet"], params["query"])
     logger.info("msg=API Returned")
-    print(tweets)
-    print(users)
-    spark_tweets_df = sc.parallelize(tweets).toDF()
+    spark_tweets_df = spark.parallelize(tweets).toDF()
     logger.info("msg=spark_tweets_df Created")
-    spark_users_df = sc.parallelize(users).toDF()
+    spark_users_df = spark.parallelize(users).toDF()
     logger.info("msg=spark_users_df Created")
-    spark.sparkContext._jsc.hadoopConfiguration().set(
-        "fs.s3a.access.key", AWS_ACCESS_KEY_ID
-    )
-    spark.sparkContext._jsc.hadoopConfiguration().set(
-        "fs.s3a.secret.key", AWS_SECRET_ACCESS_KEY
-    )
+    spark._jsc.hadoopConfiguration().set("fs.s3a.access.key", AWS_ACCESS_KEY_ID)
+    spark._jsc.hadoopConfiguration().set("fs.s3a.secret.key", AWS_SECRET_ACCESS_KEY)
     logger.info("msg=AWS Keys Set")
     spark_tweets_df.write.json(
         f"s3a://{bucket_name}/Raw/{date.today()}/{file_name_tweet}"
