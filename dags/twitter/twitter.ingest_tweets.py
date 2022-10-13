@@ -22,6 +22,7 @@ bucket_name = "databoys"
 file_name_tweets = "tweets_json.json"
 file_name_users = "users_json.json"
 
+
 def create_spark_session():
     spark_session = (
         SparkSession.builder.config(
@@ -65,10 +66,7 @@ def write_twitter_df():
 def raw_to_trusted(ti):
     success = ti.xcom_pull(task_ids="write_twitter_df")
     if success == 1:
-        spark = SparkSession.builder.config(
-        "spark.jars.packages",
-        "org.apache.hadoop:hadoop-common:3.3.3,org.apache.hadoop:hadoop-client:3.3.3,org.apache.hadoop:hadoop-aws:3.3.3",
-        ).master("local[*]").getOrCreate()
+        spark = create_spark_session()
         bucket_name = "databoys"
         spark.sparkContext._jsc.hadoopConfiguration().set(
             "fs.s3a.access.key", AWS_ACCESS_KEY_ID
@@ -77,7 +75,6 @@ def raw_to_trusted(ti):
             "fs.s3a.secret.key", AWS_SECRET_ACCESS_KEY
         )
         x = 1
-        y = 1
         try:
             tweets = spark.read.json(
                 f"s3a://{bucket_name}/Raw/{date.today()}/{file_name_tweets}/"
@@ -87,17 +84,16 @@ def raw_to_trusted(ti):
             )
         except:
             x = 0
-            y = 0
-        if x == 0 and y == 0:
-            tweets.write.json(
+        if x == 0:
+            tweets.write.json(f"s3a://{bucket_name}/Trusted/{file_name_tweets}")
+            users.write.json(f"s3a://{bucket_name}/Trusted/{file_name_users}")
+        else:
+            tweets.write.mode("append").json(
                 f"s3a://{bucket_name}/Trusted/{file_name_tweets}"
             )
-            users.write.json(
+            users.write.mode("append").json(
                 f"s3a://{bucket_name}/Trusted/{file_name_users}"
             )
-        else:
-            tweets.write.mode("append").json(f"s3a://{bucket_name}/Trusted/{file_name_tweets}")
-            users.write.mode("append").json(f"s3a://{bucket_name}/Trusted/{file_name_users}")
     else:
         logger.info("msg=Error")
     return

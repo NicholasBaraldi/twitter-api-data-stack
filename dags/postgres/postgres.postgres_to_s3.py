@@ -10,9 +10,9 @@ import logging
 import csv
 
 default_args = {
-    'owner': 'Joao Victor',
-    'retries': 5,
-    'retryu_delay': timedelta(minutes=10)
+    "owner": "Joao Victor",
+    "retries": 5,
+    "retryu_delay": timedelta(minutes=10),
 }
 AWS_ACCESS_KEY_ID = Variable.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = Variable.get("AWS_SECRET_ACCESS_KEY")
@@ -21,7 +21,7 @@ logger = logging.getLogger("write_twitter_df")
 
 
 def postgres_to_s3():
-    psql_hook = PostgresHook(postgres_conn_id = "RDS")
+    psql_hook = PostgresHook(postgres_conn_id="RDS")
     psql_conn = psql_hook.get_conn()
     cursor = psql_conn.cursor()
     cursor.execute("select * from movies")
@@ -32,15 +32,16 @@ def postgres_to_s3():
     cursor.close()
     psql_conn.close()
     logging.info("Saved table movies in DB")
-    s3_hook = S3Hook(aws_conn_id="my_conn_S3") 
+    s3_hook = S3Hook(aws_conn_id="my_conn_S3")
     s3_hook.load_file(
-        filename= f"dags/data/movies_{date.today()}.csv",
+        filename=f"dags/data/movies_{date.today()}.csv",
         key=f"Raw/Postgresql/movies_{date.today()}.csv",
         bucket_name="databoys",
-        replace = True
+        replace=True,
     )
     logging.info("Saved csv on S3")
-     
+
+
 def raw_to_trusted():
     s3_hook = S3Hook(aws_conn_id="my_conn_S3")
     logging.info("Connection Successful")
@@ -62,14 +63,14 @@ with DAG(
     postgres_to_s3 = PythonOperator(
         task_id="postgres_to_s3", python_callable=postgres_to_s3
     )
-    
+
     raw_to_trusted = PythonOperator(
         task_id="raw_to_trusted", python_callable=raw_to_trusted
     )
-    
+
     setup__task_create_table = RedshiftSQLOperator(
-        task_id='setup__create_table',
-        redshift_conn_id = 'jfc',
+        task_id="setup__create_table",
+        redshift_conn_id="jfc",
         sql="""
             CREATE TABLE IF NOT EXISTS movies (
             id serial PRIMARY KEY,
@@ -91,17 +92,17 @@ with DAG(
             genres_transformed VARCHAR ( 255 ),
             production_country_transformed VARCHAR ( 50 )
         );
-        """
-
-        transfer_s3_to_redshift = S3ToRedshiftOperator(
-            task_id='transfer_s3_to_redshift',
-            redshift_conn_id=conn_id_name,
-            s3_bucket=bucket_name,
-            s3_key=S3_KEY_2,
-            schema='PUBLIC',
-            table=REDSHIFT_TABLE,
-            copy_options=['csv']
-        )
+        """,
     )
 
-postgres_to_s3 >> raw_to_trusted 
+    transfer_s3_to_redshift = S3ToRedshiftOperator(
+        task_id="transfer_s3_to_redshift",
+        redshift_conn_id=conn_id_name,
+        s3_bucket=bucket_name,
+        s3_key=S3_KEY_2,
+        schema="PUBLIC",
+        table=REDSHIFT_TABLE,
+        copy_options=["csv"],
+    )
+
+postgres_to_s3 >> raw_to_trusted
