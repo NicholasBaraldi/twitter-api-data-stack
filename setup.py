@@ -29,5 +29,5 @@ setup(
     license="MIT",
     author="",
     install_requires=requirements,
-    python_requires=">=3.7, <4",
+    python_requires=">=3.8, <4",
 )
