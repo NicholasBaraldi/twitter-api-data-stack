@@ -1,0 +1,4 @@
+name: dbt
+config-version: 2
+version: 2.0
+profile: 'spark-warehouse'
