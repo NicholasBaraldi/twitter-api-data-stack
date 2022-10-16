@@ -1,6 +1,6 @@
 requests
 boto3
-pyspark
+pyspark==3.1.2
 apache-airflow-providers-apache-spark
 dbt-spark
 dbt-spark[PyHive]

@@ -9,3 +9,4 @@ __pycache__/
 .hive-metastore
 .vscode
 .spark-warehouse
+.user.yml
