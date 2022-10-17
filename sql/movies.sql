@@ -27,13 +27,21 @@ df.write.jdbc(url=url, table="movies", mode="append", properties=properties)
      spark = (
       SparkSession.builder.config(
           "spark.jars.packages",
-          "org.apache.hadoop:hadoop-common:3.3.3,org.apache.hadoop:hadoop-client:3.3.3,org.apache.hadoop:hadoop-aws:3.3.3,org.apache.hive:hive-jdbc:3.1.3, org.apache.curator:curator-framework:3.1.0",
+          "org.apache.hadoop:hadoop-common:3.3.3,org.apache.hadoop:hadoop-client:3.3.3,org.apache.hadoop:hadoop-aws:3.3.3,org.apache.hive:hive-jdbc:3.1.3",
       )
       .master("local[*]")
       .getOrCreate()
   )
-   properties = {
-          "user": "admin",
-          "password": ""
-      }
+   properties = {"user": "admin", "password": ""}
       url = "jdbc:hive2://localhost:10000"
+
+      CREATE TABLE data (firstname STRING , middlename STRING , lastname STRING , id STRING , gender STRING , salary INTEGER );
+
+
+df.write.format("jdbc") \
+.mode("append") \
+.option("url", url) \
+.option("dbtable","test.data")\
+.option("user", "admin") \
+.option("password", "") \
+.save()

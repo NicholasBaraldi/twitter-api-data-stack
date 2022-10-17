@@ -6,11 +6,9 @@ from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from airflow.models import Variable
 
-# from airflow.providers.amazon.aws.operators.redshift import RedshiftSQLOperator
 import logging
 import os
 
-# os.environ['PYSPARK_SUBMIT_ARGS'] = "--master spark://localhost:8888"
 
 AWS_ACCESS_KEY_ID = Variable.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = Variable.get("AWS_SECRET_ACCESS_KEY")
@@ -39,7 +37,7 @@ def write_twitter_df():
     logger.info("JAVA_HOME")
     spark = create_spark_session().sparkContext
     t = Twitter(bearer_token)
-    params = {"query": "#HouseOfTheDragon", "ntweets": 100, "nreq": 2}
+    params = {"query": "#HouseOfTheDragon", "ntweets": 100, "nreq": 200}
     tweets, users = t.make_req(params["query"], params["ntweets"], params["nreq"])
     logger.info("msg=API Returned")
     spark_tweets_df = spark.parallelize(tweets).toDF()
@@ -88,10 +86,10 @@ def raw_to_trusted(ti):
             tweets.write.json(f"s3a://{bucket_name}/Trusted/{file_name_tweets}")
             users.write.json(f"s3a://{bucket_name}/Trusted/{file_name_users}")
         else:
-            tweets.write.mode("append").json(
+            tweets.coalesce(1).write.mode("append").json(
                 f"s3a://{bucket_name}/Trusted/{file_name_tweets}"
             )
-            users.write.mode("append").json(
+            users.coalesce(1).write.mode("append").json(
                 f"s3a://{bucket_name}/Trusted/{file_name_users}"
             )
     else:
