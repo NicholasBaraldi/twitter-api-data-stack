@@ -24,13 +24,7 @@ CREATE OR REPLACE TABLE movies (id serial PRIMARY KEY,id_movie VARCHAR ( 50 ) UN
 -- \copy movies (id,id_movie,title,type,description,release_year,age_certification,runtime,genres,production_country,seasons,imdb_id,imdb_score,imdb_votes,tmdb_popularity,tmdb_score,genres_transformed,production_country_transformed) from '/home/joao_victor/twitter-api-data-stack/data/df_titles.csv' WITH DELIMITER ',' CSV HEADER;
 
 df.write.jdbc(url=url, table="movies", mode="append", properties=properties)
-     spark = (
-      SparkSession.builder.config(
-          "spark.jars.packages",
-          "org.apache.hadoop:hadoop-common:3.3.3,org.apache.hadoop:hadoop-client:3.3.3,org.apache.hadoop:hadoop-aws:3.3.3,org.apache.hive:hive-jdbc:3.1.3",
-      )
-      .master("local[*]")
-      .getOrCreate()
+spark = SparkSession.builder.config("spark.jars.packages", "org.postgresql:postgresql:42.5.0").config('spark.driver.host','127.0.0.1').getOrCreate()
   )
    properties = {"user": "admin", "password": ""}
       url = "jdbc:hive2://localhost:10000"
@@ -45,3 +39,7 @@ df.write.format("jdbc") \
 .option("user", "admin") \
 .option("password", "") \
 .save()
+
+
+
+studentDf.select("id","name","marks").write.format("jdbc").option("url", "jdbc:postgresql://localhost:5432/dbt_db").option("driver", "org.postgresql.Driver").option("dbtable", "students").option("user", "username").option("password", "password").save()
