@@ -8,14 +8,15 @@ logger = logging.getLogger("twitter_search")
 
 
 class Twitter:
-    """Class for making request to twitter API."""
+    """_summary_"""
 
-    def __init__(self, bearer_token) -> None:
+    def __init__(self) -> None:
         """Create request session and recieve authorization params.
 
         Args:
-            bearer_token (str): Authentication token.
+            bearer_token (str): Autentication token.
         """
+        bearer_token = json.load(open("./api_keys.json"))["Bearer Token"]
         self.bearer_token = bearer_token
         self._api_base_url = f"https://api.twitter.com/2/tweets/search/recent"
 
@@ -52,7 +53,7 @@ class Twitter:
             nreq -= 1
         return tweets, users
 
-    def make_req(self, query: str, ntweet: int, nreq: int) -> Tuple:
+    def make_req(self, query: str, ntweet: int, nreq: int) -> list:
         """Call _twitter_search and raises an error if reqs are not done.
 
         Args:
@@ -64,7 +65,7 @@ class Twitter:
             Exception: Stops method if tweets_list are empty.
 
         Returns:
-            list: Tuple
+            list: List of tweets.
         """
         tweets_list, users_list = self._twitter_search(query, ntweet, nreq)
         if tweets_list:

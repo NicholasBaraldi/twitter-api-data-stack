@@ -44,7 +44,7 @@ x-airflow-common:
   # In order to add custom dependencies or upgrade provider packages you can use your extended image.
   # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
   # and uncomment the "build" line below, Then run `docker-compose build` to build the images.
-  image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.4.0}
+  image: airflow-databoys:2.4.0
   # build: .
   environment:
     &airflow-common-env
@@ -59,10 +59,12 @@ x-airflow-common:
     AIRFLOW__CORE__LOAD_EXAMPLES: 'true'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
+    PYTHONPATH: /twitter-api-data-stack
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
+    - .:/twitter-api-data-stack
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -96,6 +98,31 @@ services:
       timeout: 30s
       retries: 50
     restart: always
+
+  dbt-spark245-thrift:
+    image: godatadriven/pyspark:latest
+    ports:
+      - "10000:10000"
+      - "4040:4040"
+    depends_on:
+      - dbt-hive-metastore
+    command: >
+      --class org.apache.spark.sql.hive.thriftserver.HiveThriftServer2
+      --name Thrift JDBC/ODBC Server
+    volumes:
+      - ./.spark-warehouse/:/spark-warehouse/
+      - ./docker/hive-site.xml:/usr/spark/conf/hive-site.xml
+    environment:
+      - WAIT_FOR=dbt-hive-metastore:5432
+
+  dbt-hive-metastore:
+    image: postgres:9.6.17-alpine
+    volumes:
+      - ./.hive-metastore/:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=dbt
+      - POSTGRES_PASSWORD=dbt
+      - POSTGRES_DB=metastore
 
   airflow-webserver:
     <<: *airflow-common
@@ -276,3 +303,4 @@ services:
 
 volumes:
   postgres-db-volume:
+  
