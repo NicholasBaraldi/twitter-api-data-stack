@@ -5,3 +5,7 @@ sources:
     tables:
       - name: movies
       - name: movies_csv
+
+  - name: pg_catalog
+    tables:
+      - name: pg_aggregate

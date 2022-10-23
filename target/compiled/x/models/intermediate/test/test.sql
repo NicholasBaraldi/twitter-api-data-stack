@@ -1,0 +1,1 @@
+select * from "dbt_db"."pg_catalog"."pg_aggregate"
