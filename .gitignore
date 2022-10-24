@@ -6,7 +6,7 @@ logs*
 __pycache__/
 /twitter-api-data-stack/dags/data/*
 .pytest_cache
-.hive-metastore
 .vscode
 .spark-warehouse
 .user.yml
+target*
