@@ -16,7 +16,6 @@ AWS_SECRET_ACCESS_KEY = Variable.get("AWS_SECRET_ACCESS_KEY")
 
 logger = logging.getLogger("write_twitter_df")
 bucket_name = "databoys"
-file_name = "Trusted/Postgresql/movies_2022-10-09.csv"
 region = "us-east-1"
 
 default_args = {
@@ -26,7 +25,8 @@ default_args = {
 }
 
 
-def s3_to_warehouse():
+def rds_to_warehouse():
+    file_name = "Trusted/Postgresql/movies_2022-10-09.csv"
     logger.info("First task Initialized")
     s3 = boto3.client(
         "s3",
@@ -45,6 +45,35 @@ def s3_to_warehouse():
     initial_df.to_sql("movies", engine)
 
 
+def s3_to_warehouse():
+    df_list = []
+    file_name = "Trusted/tweets_json.json/part-00000-e25a9009-ade2-40e5-a9c4-c91143c99620-c000.json"
+    logger.info("Second task Initialized")
+    s3 = boto3.client(
+        "s3",
+        aws_access_key_id=AWS_ACCESS_KEY_ID,
+        aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+        region_name=region,
+    )
+    logger.info("msg=client created")
+    paginator = s3.get_paginator('list_objects_v2')
+    result = paginator.paginate(Bucket='databoys', StartAfter='Trusted/tweets_json.json/part-00000-e25a9009-ade2-40e5-a9c4-c91143c99620-c000.json')
+    for page in result:
+        if "Contents" in page:
+            for key in page["Contents"]:
+                keyString = key["Key"]
+                obj = s3.get_object(Bucket=bucket_name, Key=keyString)
+                initial_df = pd.read_json(obj["Body"], lines=True)
+                df_list.append(initial_df)
+    final_df = pd.concat(df_list)
+    logger.info("msg=Dataframe Created")
+    engine = create_engine(
+        "postgresql://username:password@host.docker.internal:5432/postgres"
+    )
+    final_df.to_sql("movies", engine)
+
+
+
 with DAG(
     "s3_to_warehouse",
     default_args=default_args,
@@ -53,6 +82,6 @@ with DAG(
     catchup=False,
 ) as dag:
 
-    s3_to_warehouse = PythonOperator(
-        task_id="s3_to_warehouse", python_callable=s3_to_warehouse
+    rds_to_warehouse = PythonOperator(
+        task_id="s3_to_warehouse", python_callable=rds_to_warehouse
     )
