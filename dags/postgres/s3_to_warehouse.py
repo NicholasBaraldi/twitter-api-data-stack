@@ -1,3 +1,4 @@
+from queue import Empty
 import re
 from airflow import DAG
 from airflow.operators.python import PythonOperator
@@ -21,33 +22,17 @@ region = "us-east-1"
 default_args = {
     "owner": "Joao Victor, Nicholas Baraldi",
     "retries": 5,
-    "retryu_delay": timedelta(minutes=10),
+    "return_delay": timedelta(minutes=10),
 }
 
+def task_start():
+    print("Hello")
 
-def rds_to_warehouse():
-    file_name = "Trusted/Postgresql/movies_2022-10-09.csv"
-    logger.info("First task Initialized")
-    s3 = boto3.client(
-        "s3",
-        aws_access_key_id=AWS_ACCESS_KEY_ID,
-        aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
-        region_name=region,
-    )
-    logger.info("msg=client created")
-    obj = s3.get_object(Bucket=bucket_name, Key=file_name)
-    logger.info("msg=object obtained")
-    initial_df = pd.read_csv(obj["Body"])
-    logger.info("msg=Dataframe Created")
-    engine = create_engine(
-        "postgresql://username:password@host.docker.internal:5432/postgres"
-    )
-    initial_df.to_sql("movies", engine)
+def task_end():
+    print("Hello")
 
-
-def s3_to_warehouse():
+def tweets_to_warehouse():
     df_list = []
-    file_name = "Trusted/tweets_json.json/part-00000-e25a9009-ade2-40e5-a9c4-c91143c99620-c000.json"
     logger.info("Second task Initialized")
     s3 = boto3.client(
         "s3",
@@ -57,21 +42,52 @@ def s3_to_warehouse():
     )
     logger.info("msg=client created")
     paginator = s3.get_paginator('list_objects_v2')
-    result = paginator.paginate(Bucket='databoys', StartAfter='Trusted/tweets_json.json/part-00000-e25a9009-ade2-40e5-a9c4-c91143c99620-c000.json')
+    result = paginator.paginate(Bucket='databoys', StartAfter = "Trusted/tweets_json.json/")
     for page in result:
         if "Contents" in page:
             for key in page["Contents"]:
                 keyString = key["Key"]
-                obj = s3.get_object(Bucket=bucket_name, Key=keyString)
-                initial_df = pd.read_json(obj["Body"], lines=True)
-                df_list.append(initial_df)
+                if "tweets_json.json" in keyString:
+                    print(keyString)
+                    obj = s3.get_object(Bucket=bucket_name, Key=keyString)
+                    initial_df = pd.read_json(obj["Body"], lines=True)
+                    df_list.append(initial_df)
     final_df = pd.concat(df_list)
     logger.info("msg=Dataframe Created")
+    print(final_df)
     engine = create_engine(
-        "postgresql://username:password@host.docker.internal:5432/postgres"
+        "postgresql://username:password@host.docker.internal:5432/dbt_db"
     )
-    final_df.to_sql("movies", engine)
+    final_df.to_sql("tweets", engine)
 
+def users_to_warehouse():
+    df_list = []
+    logger.info("Second task Initialized")
+    s3 = boto3.client(
+        "s3",
+        aws_access_key_id=AWS_ACCESS_KEY_ID,
+        aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+        region_name=region,
+    )
+    logger.info("msg=client created")
+    paginator = s3.get_paginator('list_objects_v2')
+    result = paginator.paginate(Bucket='databoys', StartAfter = "Trusted/users_json.json/")
+    for page in result:
+        if "Contents" in page:
+            for key in page["Contents"]:
+                keyString = key["Key"]
+                if "users_json.json" in keyString:
+                    print(keyString)
+                    obj = s3.get_object(Bucket=bucket_name, Key=keyString)
+                    initial_df = pd.read_json(obj["Body"], lines=True)
+                    df_list.append(initial_df)
+    final_df = pd.concat(df_list)
+    logger.info("msg=Dataframe Created")
+    print(final_df)
+    engine = create_engine(
+        "postgresql://username:password@host.docker.internal:5432/dbt_db"
+    )
+    final_df.to_sql("users", engine)
 
 
 with DAG(
@@ -82,6 +98,20 @@ with DAG(
     catchup=False,
 ) as dag:
 
-    rds_to_warehouse = PythonOperator(
-        task_id="s3_to_warehouse", python_callable=rds_to_warehouse
-    )
+    tweets_to_warehouse = PythonOperator(
+        task_id="tweets_to_warehouse", python_callable=tweets_to_warehouse
+    )    
+
+    users_to_warehouse = PythonOperator(
+        task_id="users_to_warehouse", python_callable=users_to_warehouse
+    ) 
+
+    task_start = PythonOperator(
+       task_id="task_start", python_callable=task_start 
+    )   
+    
+    task_end = PythonOperator(
+       task_id="task_end", python_callable=task_end 
+    )  
+
+task_start >> [tweets_to_warehouse, users_to_warehouse] >> task_end
