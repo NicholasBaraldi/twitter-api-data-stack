@@ -1,10 +1,12 @@
 version: 2
 
 sources:
-  - name: dbt_db
+  - name: public
     tables:
       - name: movies
       - name: movies_csv
+      - name: tweets
+      - name: users
 
   - name: pg_catalog
     tables:
