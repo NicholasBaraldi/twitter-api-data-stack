@@ -10,6 +10,7 @@ import boto3
 import logging
 import pandas as pd
 from sqlalchemy import create_engine
+from pandas.io import sql
 
 
 AWS_ACCESS_KEY_ID = Variable.get("AWS_ACCESS_KEY_ID")
@@ -25,11 +26,12 @@ default_args = {
     "return_delay": timedelta(minutes=10),
 }
 
-def task_start():
-    print("Hello")
-
-def task_end():
-    print("Hello")
+def drop_table():
+    engine = create_engine(
+        "postgresql://username:password@host.docker.internal:5432/dbt_db"
+    )
+    sql.execute('DROP TABLE IF EXISTS tweets CASCADE', engine)
+    sql.execute('DROP TABLE IF EXISTS users CASCADE', engine)
 
 def tweets_to_warehouse():
     df_list = []
@@ -48,17 +50,15 @@ def tweets_to_warehouse():
             for key in page["Contents"]:
                 keyString = key["Key"]
                 if "tweets_json.json" in keyString:
-                    print(keyString)
                     obj = s3.get_object(Bucket=bucket_name, Key=keyString)
                     initial_df = pd.read_json(obj["Body"], lines=True)
                     df_list.append(initial_df)
     final_df = pd.concat(df_list)
     logger.info("msg=Dataframe Created")
-    print(final_df)
     engine = create_engine(
         "postgresql://username:password@host.docker.internal:5432/dbt_db"
     )
-    final_df.to_sql("tweets", engine)
+    final_df.to_sql("tweets", engine, if_exists = 'replace')
 
 def users_to_warehouse():
     df_list = []
@@ -87,11 +87,11 @@ def users_to_warehouse():
     engine = create_engine(
         "postgresql://username:password@host.docker.internal:5432/dbt_db"
     )
-    final_df.to_sql("users", engine)
+    final_df.to_sql("users", engine, if_exists = 'replace')
 
 
 with DAG(
-    "s3_to_warehouse",
+    "s3_to_postgres_dw",
     default_args=default_args,
     start_date=datetime(2022, 9, 30),
     schedule_interval="0 21 * * 0",
@@ -106,12 +106,8 @@ with DAG(
         task_id="users_to_warehouse", python_callable=users_to_warehouse
     ) 
 
-    task_start = PythonOperator(
-       task_id="task_start", python_callable=task_start 
+    drop_table = PythonOperator(
+       task_id="drop_table", python_callable=drop_table 
     )   
-    
-    task_end = PythonOperator(
-       task_id="task_end", python_callable=task_end 
-    )  
 
-task_start >> [tweets_to_warehouse, users_to_warehouse] >> task_end
+drop_table >> [tweets_to_warehouse, users_to_warehouse]
