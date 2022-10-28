@@ -2,5 +2,13 @@ name: x
 config-version: 2
 version: 2.0
 profile: 'dbt-postgres'
-
 model-paths: ["models"]
+
+models:
+  x:
+    datamart:
+      # materialize all models in models/events as tables
+      +materialized: table
+    intermetiade:
+      # this is redundant, and does not need to be set
+      +materialized: table

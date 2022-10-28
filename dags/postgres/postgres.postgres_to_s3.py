@@ -46,7 +46,7 @@ def raw_to_trusted():
     logging.info("Connection Successful")
     s3_hook.copy_object(
         source_bucket_key=f"s3://databoys/Raw/Postgresql/movies_{date.today()}.csv",
-        dest_bucket_key=f"s3://databoys/Trusted/Postgresql/movies_{date.today()}.csv",
+        dest_bucket_key=f"s3://databoys/Trusted/Postgresql/movies.csv",
     )
     logging.info("Saved csv on Trusted")
 
