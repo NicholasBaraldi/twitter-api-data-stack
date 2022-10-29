@@ -1,4 +1,5 @@
-select  
+select
+    distinct
     tweets.id as tweets_id
     , users.id as username_id
     , users.username as username

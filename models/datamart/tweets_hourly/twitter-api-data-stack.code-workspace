@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "twitter-api-data-stack",
+			"path": "../../.."
+		}
+	],
+	"settings": {
+		"makefile.extensionOutputFolder": "./.vscode"
+	}
+}
