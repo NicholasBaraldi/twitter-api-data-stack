@@ -51,10 +51,12 @@ def tweets_to_warehouse():
                 keyString = key["Key"]
                 if "tweets_json.json" in keyString:
                     obj = s3.get_object(Bucket=bucket_name, Key=keyString)
+                    print(obj["Body"])
                     initial_df = pd.read_json(obj["Body"], lines=True)
                     df_list.append(initial_df)
     final_df = pd.concat(df_list)
     logger.info("msg=Dataframe Created")
+    print(final_df)
     engine = create_engine(
         "postgresql://username:password@host.docker.internal:5432/dbt_db"
     )
@@ -79,6 +81,7 @@ def users_to_warehouse():
                 if "users_json.json" in keyString:
                     print(keyString)
                     obj = s3.get_object(Bucket=bucket_name, Key=keyString)
+                    print(obj["Body"])
                     initial_df = pd.read_json(obj["Body"], lines=True)
                     df_list.append(initial_df)
     final_df = pd.concat(df_list)
