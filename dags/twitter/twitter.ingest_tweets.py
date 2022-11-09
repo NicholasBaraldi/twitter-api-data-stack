@@ -90,7 +90,7 @@ def raw_to_trusted(ti):
                 f"s3a://{bucket_name}/Trusted/{file_name_tweets}"
             )
             users.coalesce(1).write.mode("append").json(
-                f"s3a://{bucket_name}/Trusted/{file_name_users}"
+                f"s3a://{bucket_name}/Trusted/{file_name_users}" 
             )
     else:
         logger.info("msg=Error")

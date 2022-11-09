@@ -1,13 +1,15 @@
-spark-warehouse:
-  target: local
+dbt-postgres:
+  target: dev
   outputs:
-    local:
-      type: spark
-      method: thrift
+    dev:
+      type: postgres
       host: 127.0.0.1
-      port: 10000
-      user: dbt
-      schema: analytics
-      connect_retries: 5
-      connect_timeout: 60
-      retry_all: true
+      user: username
+      password: password
+      port: 5432
+      dbname: dbt_db
+      schema: dbt_schema
+      threads: 2
+      keepalives_idle: 0 # default 0, indicating the system default. See below
+      connect_timeout: 10 # default 10 seconds
+      retries: 1  # default 1 retry on error/timeout when opening connections
