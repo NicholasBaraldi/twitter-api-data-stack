@@ -1,7 +1,6 @@
 # twitter-api-data-stack
 
-This project was made with the intention to learn and get a hand on a real-world data challenge and at the same time try to develop engineering best practices about  
-the most used Data Eng stack such as Apache Airflow and AWS S3, and for that, we decided to create a pipeline to consume data from Twitter API and analyze them.
+This project was made with the intention to learn and get a hand on a real-world data challenge and at the same time try to develop engineering best practices about the most used Data Eng stack such as Apache Airflow and AWS S3, and for that, we decided to create a pipeline to consume data from Twitter API and analyze them.
 
 ![Data Infra Diagram](https://cdn.discordapp.com/attachments/1023624440350785706/1040030229533569074/Diagrama_sem_nome.drawio.png)
 
@@ -35,8 +34,7 @@ Leave all the other fields (Host, Schema, Login) blank.
 <br />
 
 The next step was to create the Pipelines using Airflow DAGs.  
-The first DAG\`s Task instanciate the class `Twitter` and runs the method `make_req` to ingest the tweets with the chosen parans like hashtag, in this case #HouseOfTheDragon,  
-number of tweets per request and number of requests
+The first DAG\`s Task instanciate the class `Twitter` and runs the method `make_req` to ingest the tweets with the chosen parans like hashtag, in this case #HouseOfTheDragon, number of tweets per request and number of requests
 ``` Python
 t = Twitter(bearer_token)
 params = {"query": "#HouseOfTheDragon", "ntweets": 100, "nreq": 200}
@@ -65,8 +63,7 @@ final_df.to_sql("tweets", engine, if_exists = 'replace')
 ## Analytics Engineering
 <br />
 
-The next step in this flow was to model the data in a way to facilitate data consumption. For that we chose DBT, a powerful tool for data wrangling and Analytics Engineering,  
-to make the transformations, to struct data, and to create data lineage.
+The next step in this flow was to model the data in a way to facilitate data consumption. For that we chose DBT, a powerful tool for data wrangling and Analytics Engineering, to make the transformations, to struct data, and to create data lineage.
 
 We structured the models in intermediate and datamart, so you can use
 ```
